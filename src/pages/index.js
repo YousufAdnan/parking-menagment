@@ -13,7 +13,7 @@ const IndexPage = () => (
     <Typography align="center" variant="h4"> STREET</Typography>
   <StreetComp/>
  
-<Employee/>
+{/* <Employee/> */}
   </Layout>
 )
 
