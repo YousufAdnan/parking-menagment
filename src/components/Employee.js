@@ -1,64 +1,74 @@
-import React from 'react';
-import { Box,Typography } from '@mui/material';
-import { makeStyles } from '@mui/styles';
+import React from "react"
+import { Box, Typography } from "@mui/material"
+import { makeStyles } from "@mui/styles"
 
-export const employee=[
-    {
-        name:"Asif",
-         image:"data:image/jpeg;base64,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", 
-         road:"19 Liberty St, New York, NY 10045, USA",
-         address:"2no gate, chittagong, bangladesh"
-    },
-    {name:"Nadir",
-     image:"data:image/jpeg;base64,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",
-      road:"10, Jalan Tiga, 55200 Kuala Lumpur, Malaysia",
-      address:"2no gate, chittagong, bangladesh"},
-    {name:"Nafiz",
-     image:"https://preview.keenthemes.com/metronic-v4/theme/assets/pages/media/profile/profile_user.jpg",
-      road:"19 Liberty St, New York, NY 10045, USA",
-      address:"2no gate, chittagong, bangladesh"},
-    
+export const employee = [
+  {
+    name: "Asif",
+    image:
+      "data:image/jpeg;base64,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",
+    road: "19 Liberty St, New York, NY 10045, USA",
+    address: "2no gate, chittagong, bangladesh",
+  },
+  {
+    name: "Nadir",
+    image:
+      "data:image/jpeg;base64,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",
+    road: "10, Jalan Tiga, 55200 Kuala Lumpur, Malaysia",
+    address: "2no gate, chittagong, bangladesh",
+  },
+  {
+    name: "Nafiz",
+    image:
+      "https://preview.keenthemes.com/metronic-v4/theme/assets/pages/media/profile/profile_user.jpg",
+    road: "19 Liberty St, New York, NY 10045, USA",
+    address: "2no gate, chittagong, bangladesh",
+  },
 ]
 const Employee = () => {
-const classes=styles()
-  
-    return (
-        <Box>
-             <Typography align="center" variant="h4">EMPLOYEE</Typography>
-        <Box className={classes.container}>
-            
-        {employee.map(items=>(
-            <Box className={classes.card}>
-                <img className={classes.image} src={items.image} alt="" />
-                <Typography variant="h5"><span className={classes.span}>Name:</span> {items.name}</Typography>
-                <Typography variant="h6"><span className={classes.span}>Road:</span> {items.road}</Typography>
-                <Typography variant="h6"><span className={classes.span}>Address:</span>  {items.address}</Typography>
-     <Typography variant="h6">Transaction id:</Typography>
-            </Box>
-        ))}
-        </Box>
-        </Box>
-    );
-};
-const styles=makeStyles({
-    image:{
-borderRadius:"30px !important",
-width:"15vw !important",
-height:"13vw !important"
-    },
-    container:{
+  const classes = styles()
 
-        display:'flex',
-        
-    },
-    card:{
-        margin:" 5vw  auto 0 auto !important",
-        textAlign:"center"
-   
-    },
-    span:{
-        fontWeight:"700"
-    }
+  return (
+    <Box>
+      <Typography align="center" variant="h4">
+        EMPLOYEE
+      </Typography>
+      <Box className={classes.container}>
+        {employee.map(items => (
+          <Box className={classes.card}>
+            <img className={classes.image} src={items.image} alt="" />
+            <Typography variant="h5">
+              <span className={classes.span}>Name:</span> {items.name}
+            </Typography>
+            <Typography variant="h6">
+              <span className={classes.span}>Road:</span> {items.road}
+            </Typography>
+            <Typography variant="h6">
+              <span className={classes.span}>Address:</span> {items.address}
+            </Typography>
+            <Typography variant="h6">Transaction id:</Typography>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  )
+}
+const styles = makeStyles({
+  image: {
+    borderRadius: "30px !important",
+    width: "15vw !important",
+    height: "13vw !important",
+  },
+  container: {
+    display: "flex",
+  },
+  card: {
+    margin: " 5vw  auto 0 auto !important",
+    textAlign: "center",
+  },
+  span: {
+    fontWeight: "700",
+  },
 })
 
-export default Employee;
+export default Employee
